@@ -1,0 +1,131 @@
+\newcommand{\DeclareAutoPairedDelimiter}[3]{%
+  \expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}%
+  \begingroup\edef\x{\endgroup
+    \noexpand\DeclareRobustCommand{\noexpand#1}{%
+      \expandafter\noexpand\csname Auto\string#1\endcsname*}}%
+  \x}
+
+
+% ---------------------- packages ------------------------
+\usepackage[backend=biber,
+style=alphabetic,
+sorting=ynt]{biblatex}
+\addbibresource{references.bib}
+
+\usepackage{bbm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{graphicx} % for images
+\usepackage{hyperref} % for references
+\usepackage{a4wide} % Wider pages
+\usepackage{fancyhdr} %for nice headers
+
+\usepackage{algorithm2e}    % for algorithms
+\RestyleAlgo{ruled}
+
+\usepackage{listings}       % for code
+\usepackage{color}          % For Color in code
+
+\usepackage{macros}
+
+% Text appearance (only choose one line or none at all. These make the document look significantly different)
+%\usepackage{newtxtext,newtxmath}   % old style
+%\usepackage{stix}                   % Makes text not so thin and provides extra symbols
+
+% ---------------------- typographical ------------------------
+\renewcommand{\leq}{\leqslant}      % only use \leqslant
+\renewcommand{\geq}{\geqslant}      % only use \geqslant
+
+
+% ---------------------- operators ------------------------
+% Basic operators
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\nroot}[2]{\sqrt[\leftroot{-2}\uproot{2}#1]{#2}} % #1th root of #2
+\DeclareAutoPairedDelimiter{\ceil}{\lceil}{\rceil} % ceiling
+\DeclareAutoPairedDelimiter{\floor}{\lfloor}{\rfloor} % floor
+
+% Trigonometric
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\artanh}{artanh}
+
+% Probability symbols
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\PPa}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\PE}{\mathbb{E}}
+\newcommand{\PEa}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\argmax}[2]{\underset{#1}{\operatorname{argmax}}\left[ #2 \right]}
+\newcommand{\Var}[1]{\operatorname{Var}\left(#1\right)}
+\newcommand{\avg}{\sum_{i=1}^n X_i}
+\newcommand{\bbOne}{\mathbbm{1}}
+
+
+% Asymptotic relations
+\newcommand{\bigO}[1]{O\left(#1\right)}				%	Big O notation
+\newcommand{\smallO}[1]{o\left(#1\right)}			%	Small o notation
+\newcommand{\bigT}[1]{\Theta\left(#1\right)}		%	Theta notation
+
+% ---------------------- Letters ------------------------
+\renewcommand{\epsilon}{\varepsilon} % only use \varepsilon
+\renewcommand{\sigma}{\varsigma} % only use \varsigma
+
+% Sets
+\newcommand{\N}{\mathbb{N}} % natural numbers
+\newcommand{\Z}{\mathbb{Z}} % integers
+\newcommand{\Q}{\mathbb{Q}} % rational numbers
+\newcommand{\R}{\mathbb{R}} % real numbers
+\newcommand{\C}{\mathbb{C}} % complex numbers
+\renewcommand{\Re}{\mathrm{Re}} % real part
+\renewcommand{\Im}{\mathrm{Im}} % imaginary part
+
+% Caligraphic letters
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cL}{\mathcal{L}}
+
+
+% ---------------------- Theorems ------------------------
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{ansatz}{Ansatz}
+\newtheorem{example}{Example}
+\newtheorem{corollary}{Corollary}
+\newtheorem{intermezzo}{Intermezzo}
+
+
+
+
+% --------------------------
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{lightgray}{rgb}{0.9,0.9,0.9}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{lightblue}{rgb}{0.3,0.48,0.97}
+%115, 169, 255
+%40, 122, 252
+
+\lstset{frame=tb,
+  backgroundcolor=\color{lightgray},
+  language=R,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{lightblue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}

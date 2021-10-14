@@ -1,0 +1,124 @@
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\scriptsize{Title}}
+\lhead{}
+\rfoot{Page \thepage}
+%\cfoot{\thepage}
+
+\section{Introduction}
+This document is a template and or guide to formatting your Overleaf projects. You can pick elements that you like the most from this project. To get rid of all the sections we wrote here to show you what you can do with Overleaf, simply remove the line $\symbol{92}$input\{sections/help\} in main.tex.
+
+\section{Layout}
+In order to space paragraphs apart from another vertically, people often mess around with $\symbol{92}$newline or $\symbol{92}\symbol{92}$.
+
+\vspace{10mm}\noindent
+This text is 10mm below the paragraph above. I used the $\symbol{92}$vspace command which stands for vertical space in order to achieve this. After that I use the command $\symbol{92}$noindent to remove indentation.
+
+\vspace{5mm}
+This text is 5mm below the paragraph above. I did not specify the noindent command. If you want to start writing on a new page you use the $\symbol{92}newpage$ command.
+
+\subsection*{subsection}
+This is a subsection that does not appear in the table of contents because I put $*$ after the $\symbol{92}$subsection command
+\subsubsection{subsubsection}
+This is a subsubsection that does appear in the table of contents.
+
+
+\section{Symbols \& Operators}
+Consider $a\in\Q$, $b\in\R$ and $c\in\cA$. Consider the function $\mu_{k}:\Omega\to\R$ given by $\mu_k(A)=k\cdot\abs{A}$.
+
+\begin{align*}
+    \arccos{1} = 2k\pi.
+\end{align*}
+
+Sets:$\N\Q\C\R\Z$. $\Re(x+iy)=x$, $\Im(x+iy)=y$. $\cA\cB\cE\cF\cH\cL$.
+
+\section{Headers and Footers}
+In order to add header you can use the fancyhdr package. Look at the top of this tex file to see how we created these headers and changed how the page numbers are indicated.
+
+
+\section{Theorems}
+\begin{theorem}[Pythagorean Theorem]\label{thrm:pythagorean-theorem}
+Let $a,b,c$ be the sides of a right triangle where $c>b$ and $c>a$. Then 
+
+\begin{align*}
+    a^2+b^2=c^2.
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+    In order to prove this statement we consider $\epsilon > 0 \dots$
+\end{proof}
+
+As we can see in the proof of \autoref{thrm:pythagorean-theorem}, this theorem is not hard to prove.
+
+\section{Images}
+Putting images side by side
+
+\section{Algorithms}
+We have implemented an extended binary Euclidean algorithm in \autoref{alg:Ext-bin-eucl}
+
+\begin{algorithm}
+\caption{Extended Binary Euclidean Algorithm}
+\label{alg:Ext-bin-eucl}
+\textbf{Input:} $a,b\in\mathbb{Z}$\;
+\textbf{Output:} $d,x,y\in\mathbb{Z}$ such that $d=\text{gcd}(a,b)=xa+yb$\;
+$a' \gets |a|$, $b' \gets |b|$, $d \gets 1$\;
+$x_1 \gets 1$, $x_2 \gets 0$\;
+$x_2 \gets 0$, $y_2 \gets 1$\;
+while $a'$ and $b'$ are both even do $a' \gets \frac{1}{2}a'$, $b' \gets \frac{1}{2}b'$, $d\gets2d$\;
+\While{\emph{\textbf{($b' > 0$)}}}{
+    \eIf{\emph{\textbf{($b'$ is odd)}}}{
+        \eIf{\emph{\textbf{($a'>b'$)}}}{
+            $a' \gets a'-b'$\;
+            $x_1\gets x_1-x_2$\;
+            $y_1\gets y_1-y_2$\;
+        }{
+            \eIf{\emph{\textbf{($b'$ is odd)}}}{
+                 $b' \gets b'-a'$\; 
+                 $x_2\gets x_2-x_1$\; 
+                 $y_2\gets y_2-y_1$\;
+            }{\If{\emph{\textbf{($b'$ is even)}}}{
+                $b'\gets \frac{1}{2}b'$\;
+                \eIf{\emph{\textbf{($x_2,y_2$ are even)}}}{
+                    $x_2 \gets \frac{1}{2}x_2$, $y_2 \gets \frac{1}{2}y_2$\;
+                }{
+                    $x_2 \gets \frac{1}{2}(x_2+|b|)$, $y_2 \gets \frac{1}{2}(y_2-|a|)$\;
+                }}
+            }
+        }
+    }
+    {\If{\emph{\textbf{($a'$ is even)}}}{
+        $a'\gets \frac{1}{2}a'$\;
+        \eIf{\emph{\textbf{($x_1,y_1$ are even)}}}{
+            $x_1 \gets \frac{1}{2}x_1$, $y_1 \gets \frac{1}{2}y_1$\;
+        }{
+            $x_1 \gets \frac{1}{2}(x_1+|b|)$, $y_1 \gets \frac{1}{2}(y_1-|a|)$\;
+        }
+    }}
+}
+$d \gets d a'$\;
+if $a\geq0$ then $x\gets x_1$ else $x\gets-x_1$\;
+if $b\geq0$ then $y\gets y_1$ else $y\gets-y_1$\;
+output d,x,y\;
+\end{algorithm}
+
+\section{Code}
+Check out the following block of code.
+
+\begin{lstlisting}[language=R]
+fib <- function(n) {
+  if (n < 2)
+    n
+  else
+    fib(n - 1) + fib(n - 2)
+}
+fib(10) # => 55
+\end{lstlisting}
+
+\section{Referencing}
+To reference, you can use the package \texttt{natbib} or \texttt{biblatex}. There are others but the latter two are most commonly used. In order for the bibliography to show up you have to have references at least one item from the bilbiography somewhere in your document \cite{article}. We have also put in a reference to an article by Einstein but it will not show in the references because we have not cited it in this project yet. You can have different styles for your references. This is determined by what inside your square brackets when you import the \texttt{bibtlatex} package. In order to add the bibliography to your table of contents you have to specify that in square brackets after the $\bs$printbibliography command.
+
+
+\newpage
+\printbibliography[heading=bibintoc,
+title={Whole bibliography}]
